@@ -1,0 +1,37 @@
+﻿# --- migration baseline ---
+node_modules/
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+target/
+dist/
+build/
+.next/
+.turbo/
+*.log
+
+# --- secrets: never commit ---
+.env
+.env.*
+*.pem
+*.key
+*.ppk
+*.pfx
+id_rsa*
+id_ed25519*
+*token*
+*credential*
+*secret*
+keyring*
+.ssh/
+credentials.json
+service-account*.json
+
+# --- os / editor ---
+Thumbs.db
+desktop.ini
+.DS_Store

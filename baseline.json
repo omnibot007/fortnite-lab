@@ -1,0 +1,53 @@
+{
+  "_comment": "Known-good state as of 2026-08-21. fortnite-guard.ps1 checks every entry; -Fix repairs the ones with a fix defined. Keep this file in sync with missions\\fortnite-tweak.md addenda.",
+  "power": {
+    "activeSchemeGuid": "5a756bc4-9e68-4a76-a0be-472f967ba946",
+    "activeSchemeName": "Ultimate Performance"
+  },
+  "registry": [
+    { "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile", "name": "SystemResponsiveness", "type": "DWord", "expected": 0 },
+    { "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile", "name": "NetworkThrottlingIndex", "type": "DWord", "expected": 4294967295 },
+    { "path": "HKCU:\\Software\\Microsoft\\GameBar", "name": "AutoGameModeEnabled", "type": "DWord", "expected": 1 },
+    { "path": "HKCU:\\System\\GameConfigStore", "name": "GameDVR_Enabled", "type": "DWord", "expected": 0 },
+    { "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers", "name": "HwSchMode", "type": "DWord", "expected": 2 },
+    { "path": "HKCU:\\Control Panel\\Mouse", "name": "MouseSpeed", "type": "String", "expected": "0" },
+    { "path": "HKCU:\\Control Panel\\Mouse", "name": "MouseThreshold1", "type": "String", "expected": "0" },
+    { "path": "HKCU:\\Control Panel\\Mouse", "name": "MouseThreshold2", "type": "String", "expected": "0" },
+    { "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling", "name": "PowerThrottlingOff", "type": "DWord", "expected": 1 },
+    { "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Executive", "name": "AdditionalCriticalWorkerThreads", "type": "DWord", "expected": 16 },
+    { "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Executive", "name": "AdditionalDelayedWorkerThreads", "type": "DWord", "expected": 16 }
+  ],
+  "registryContains": [
+    { "path": "HKCU:\\Software\\Microsoft\\DirectX\\UserGpuPreferences", "name": "DirectXUserGlobalSettings", "mustContain": "SwapEffectUpgradeEnable=1" }
+  ],
+  "bcdeditAbsent": [ "useplatformtick", "disabledynamictick", "useplatformclock" ],
+  "processesAbsent": [ "Cloudflare WARP" ],
+  "adapters": [
+    { "name": "Ethernet", "requireUp": true, "linkSpeedLike": "1 Gbps",
+      "advanced": [
+        { "displayName": "Interrupt Moderation", "expected": "Disabled" },
+        { "displayName": "Flow Control", "expected": "Disabled" },
+        { "displayName": "Energy Efficient Ethernet", "expected": "Off" }
+      ],
+      "powerMgmtOff": true }
+  ],
+  "fortniteIni": {
+    "path": "%LOCALAPPDATA%\\FortniteGame\\Saved\\Config\\WindowsClient\\GameUserSettings.ini",
+    "keys": {
+      "bDisableMouseAcceleration": "True",
+      "bUseVSync": "False",
+      "LowInputLatencyModeIsEnabled": "True",
+      "PreferredFullscreenMode": "0",
+      "LastConfirmedFullscreenMode": "0",
+      "sg.ResolutionQuality": "100",
+      "sg.ViewDistanceQuality": "2",
+      "bMotionBlur": "False"
+    }
+  },
+  "hitchBaseline": {
+    "_source": "FortniteGame.log 2026-08-20/21 sessions (pre-fix, addendum 7)",
+    "totalHitches": 348,
+    "startupStormHitches": 88,
+    "startupStormWindowMin": 7
+  }
+}
